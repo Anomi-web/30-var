@@ -1,0 +1,100 @@
+using System;
+
+namespace _5_30
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double x = 1, y, factorial, degree;
+            string a, b;
+            int i;
+            do
+            {
+                Console.WriteLine("- Введите 1 для ввода всех исходных данных ");
+                Console.WriteLine("- Введите 2 для просмотра исходных данных");
+                Console.WriteLine("- Введите 3 для выбора цикла в программы");
+                Console.WriteLine("- Введите 4 для выхода из программы");
+                Console.Write("- ");
+                a = Console.ReadLine();
+                Console.WriteLine();
+                switch (a)
+                {
+                    case "1":
+                        Console.Write("Введите целое число x: ");
+                        x = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine();
+                        break;
+                    case "2":
+                        Console.Write("Число x равно " + x);
+                        Console.WriteLine();
+                        break;
+                    case "3":
+                        do
+                        {
+                            Console.WriteLine("- Введите 1 для расчета и вывода результатов программы с циклом FOR");
+                            Console.WriteLine("- Введите 2 для расчета и вывода результатов программы с циклом WHILE");
+                            Console.WriteLine("- Введите 3 для расчета и вывода результатов программы с циклом DO");
+                            Console.WriteLine("- Введите 4 для выхода из этого меню");
+                            Console.Write("- ");
+                            b = Console.ReadLine();
+                            Console.WriteLine();
+                            switch (b)
+                            {
+                                case "1":
+                                    factorial = 1;
+                                    y = x;
+                                    degree = x;
+                                    for (i = 3; i <= 13; i += 2)
+                                    {
+                                        degree *= -x * x;
+                                        factorial *= i * (i - 1);
+                                        y += degree / factorial;
+                                    }
+                                    Console.WriteLine($"Результат вычислений равен {y}");
+                                    break;
+                                case "2":
+                                    factorial = 1;
+                                    y = x;
+                                    degree = x;
+                                    i = 3;
+                                    while (i <= 13)
+                                    {
+                                        degree *= -x * x;
+                                        factorial *= i * (i - 1);
+                                        y += degree / factorial;
+                                        i += 2;
+                                    }
+                                    Console.WriteLine($"Результат вычислений равен {y}");
+                                    break;
+                                case "3":
+                                    factorial = 1;
+                                    y = x;
+                                    degree = x;
+                                    i = 3;
+                                    do
+                                    {
+                                        degree *= -x * x;
+                                        factorial *= i * (i - 1);
+                                        y += degree / factorial;
+                                        i += 2;
+                                    }
+                                    while (i <= 13);
+                                    Console.WriteLine($"Результат вычислений равен {y}");
+                                    break;
+                                case "4": break;
+                                default:
+                                    Console.WriteLine("Ошибка! Введите цифры 1, 2, 3 или 4");
+                                    break;
+                            }
+                        }
+                        while (b != "4");
+                        break;
+                    case "4": break;
+                    default: Console.WriteLine("Ошибка! Введите 1,2,3 или 4"); break;
+                }
+            }
+            while (a != "4");
+        }
+    }
+}

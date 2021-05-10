@@ -1,0 +1,27 @@
+using System;
+
+namespace _4_30_for
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double x, y, factorial, degree;
+            int i;
+            //Дано вещественное число x. Вычислить:
+            //x - x^3/ 3! + x^5/ 5! - x^7/ 7! + x^9/ 9! - x^11 / 11! + x^13 / 13!
+            Console.Write("Введите вещественное число x: ");
+            x = double.Parse(Console.ReadLine());
+            factorial = 1;
+            y = x;
+            degree = x;
+            for (i = 3; i <= 13; i += 2)
+            {
+                degree *= -x * x;
+                factorial *= i*(i-1);
+                y += degree / factorial;
+            }
+            Console.WriteLine(y);
+        }
+    }
+}

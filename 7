@@ -1,0 +1,49 @@
+using System;
+
+namespace _7_30
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j;
+            int[,] numbers = new int[9, 9];
+            for (i = 0; i < 9; i++)
+            {
+                for (j = 0; j < 9; j++)
+                {
+                    numbers[i, j] = 9;
+                    Console.Write(numbers[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            int rowSum = 0;
+            int colSum = 0;
+            bool isMagic = true;
+            for (i = 0; i < 9; ++i)
+            {
+                rowSum += numbers[0, i];
+                colSum += numbers[i, 0];
+            }
+            if (rowSum != colSum)
+                isMagic = false;
+            for (i = 1; i < 9; ++i)
+            {
+                int rowBuf = 0;
+                int colBuf = 0;
+                for (j = 0; j < 9; ++j)
+                {
+                    rowBuf += numbers[i, j]; // сумма i-й строки
+                    colBuf += numbers[j, i]; // сумма i-го столбца
+                }
+                if ((rowBuf != rowSum) || colBuf != rowSum)
+                {
+                    isMagic = false;
+                    break;
+                }
+            }
+            Console.WriteLine((isMagic) ? "Матрица является магическим квадратом" :
+            "Матрица не является магическим квадратом");
+        }
+    }
+}

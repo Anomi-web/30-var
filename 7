@@ -7,6 +7,7 @@ namespace _7_30
         static void Main(string[] args)
         {
             int i, j;
+            //создаём новый массив 9х9
             int[,] numbers = new int[9, 9];
             for (i = 0; i < 9; i++)
             {
@@ -20,6 +21,7 @@ namespace _7_30
             int rowSum = 0;
             int colSum = 0;
             bool isMagic = true;
+            //проверка, равно ли количество столбцов количеству строк
             for (i = 0; i < 9; ++i)
             {
                 rowSum += numbers[0, i];
@@ -27,6 +29,7 @@ namespace _7_30
             }
             if (rowSum != colSum)
                 isMagic = false;
+            //проверка суммы каждого столбца и каждой строки
             for (i = 1; i < 9; ++i)
             {
                 int rowBuf = 0;

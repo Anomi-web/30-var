@@ -1,0 +1,54 @@
+using System;
+
+namespace _8_30
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Дана последовательность вещественных чисел а[0],...,а[10].
+            //Подсчитать количество элементов последовательности до второго отрицательного
+            //элемента.
+            double[] massive = new double[10];
+            int i, count = 0;
+            bool first_subzero = false;
+            Console.WriteLine("Введите изначальный массив:");
+            for (i = 0; i < 10; i++)
+            {
+            //проверка на ввод значений - они должны быть в формате double
+                try
+                {
+                    massive[i] = Convert.ToDouble(Console.ReadLine());
+                    Console.Write(" ");
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            Console.WriteLine();
+
+            //подсчёт
+            for (i = 0; i < 10; i++)
+            {
+            //проверка на индекс значения элемента массива. Если try-catch вышел нашёл исключение - индекс значения конечного элемента будет выходить за рамки массива 
+                try
+                {
+                    if (massive[i] < 0)
+                        first_subzero = true;
+                    count += 1;
+
+                    if ((massive[i + 1] < 0) && (first_subzero == true))
+                    {
+                        break;
+                    }
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            Console.WriteLine($"Количество элементов последовательности до второго отрицательного элемента равно {count}");
+        }
+    }
+}
